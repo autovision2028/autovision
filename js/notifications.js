@@ -81,6 +81,8 @@ async function sendEmails(formData) {
     location: formData.location || "",
     whatsapp: formData.whatsapp,
     purpose: formData.purpose,
+    appointmentType: formData.appointmentType || "",
+    visitDate: formData.visitDate || "",
   };
 
   const adminParams = {
@@ -91,6 +93,8 @@ async function sendEmails(formData) {
     clean_whatsapp: cleanWhats,
     purpose: formData.purpose,
     fileList: formData.fileLink || "",
+    appointmentType: formData.appointmentType || "",
+    visitDate: formData.visitDate || "",
   };
 
   try {
@@ -282,6 +286,65 @@ async function handleProviderFormSubmit(event) {
 }
 
 // ----------------------------------------------------
+// Handle Appointment Form
+// ----------------------------------------------------
+async function handleAppointmentFormSubmit(event) {
+  event.preventDefault();
+  const statusEl = document.getElementById("apmtStatus");
+  statusEl.textContent = "Submitting appointment...";
+
+  const formEl = event.target;
+  const submitBtn = formEl.querySelector('button[type="submit"]');
+  let originalBtnHtml = '';
+  if (submitBtn) {
+    originalBtnHtml = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.setAttribute('aria-busy', 'true');
+    submitBtn.innerHTML = '<span class="inline-flex items-center justify-center">' +
+      '<svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">' +
+      '<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>' +
+      '<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>' +
+      '</svg>Submitting…</span>';
+  }
+
+  const fullName = document.getElementById("apmt_fullName").value.trim();
+  const email = document.getElementById("apmt_email").value.trim();
+  const whatsapp = document.getElementById("apmt_whatsapp").value.trim();
+  const appointmentType = document.getElementById("apmt_type").value;
+  const visitDate = document.getElementById("apmt_date").value;
+
+  const formData = {
+    fullName,
+    email,
+    whatsapp,
+    purpose: `${appointmentType} Appointment`,
+    appointmentType,
+    visitDate,
+  };
+
+  const result = await sendEmails(formData);
+
+  if (result.ok) {
+    statusEl.textContent = "Appointment request submitted successfully.";
+    document.getElementById("appointmentForm").reset();
+    try { if (window.plausible) { window.plausible('Appointment Form Submitted'); } } catch(_) {}
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute('aria-busy');
+      submitBtn.innerHTML = originalBtnHtml;
+    }
+    setTimeout(() => { if (statusEl.textContent.startsWith('Appointment request submitted')) statusEl.textContent = ''; }, 6000);
+  } else {
+    statusEl.textContent = "Submission failed. Please try again.";
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute('aria-busy');
+      submitBtn.innerHTML = originalBtnHtml;
+    }
+  }
+}
+
+// ----------------------------------------------------
 // Attach Events
 // ----------------------------------------------------
 document.addEventListener("DOMContentLoaded", function () {
@@ -290,4 +353,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const providerForm = document.getElementById("providerForm");
   if (providerForm) providerForm.addEventListener("submit", handleProviderFormSubmit);
+
+  const appointmentForm = document.getElementById("appointmentForm");
+  if (appointmentForm) appointmentForm.addEventListener("submit", handleAppointmentFormSubmit);
 });

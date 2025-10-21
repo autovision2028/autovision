@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Become a Provider</title>
+  <title>Schedule an Appointment</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Plausible Analytics -->
   <script defer data-domain="autovision.ng" src="https://plausible.io/js/script.js"></script>
@@ -43,11 +43,11 @@
           <a href="index.html#gallery" class="text-gray-700 hover:text-gray-900 transition-colors">Gallery</a>
           <a href="index.html#eligibility" class="text-gray-700 hover:text-gray-900 transition-colors">Eligibility</a>
           <a href="index.html#faq" class="text-gray-700 hover:text-gray-900 transition-colors">FAQ</a>
-          <a href="appointment.html" class="text-gray-700 hover:text-gray-900 transition-colors">Appointments</a>
           <a href="provider.html" class="text-gray-700 hover:text-gray-900 transition-colors">Providers</a>
+          <a href="appointment.html" class="text-gray-700 hover:text-gray-900 transition-colors">Appointments</a>
         </nav>
 
-        <!-- Apply Now Button -->
+        <!-- Call To Action Button -->
         <a href="join.html" class="hidden md:block px-6 py-2 bg-[#00CFFF] text-[#00132B] rounded-full hover:bg-[#21DAFF] transition-colors font-medium">
           Apply Now
         </a>
@@ -67,61 +67,71 @@
           <a href="index.html#gallery" class="text-gray-700 hover:text-gray-900 transition-colors py-2">Gallery</a>
           <a href="index.html#eligibility" class="text-gray-700 hover:text-gray-900 transition-colors py-2">Eligibility</a>
           <a href="index.html#faq" class="text-gray-700 hover:text-gray-900 transition-colors py-2">FAQ</a>
-          <a href="appointment.html" class="text-gray-700 hover:text-gray-900 transition-colors py-2">Appointments</a>
           <a href="provider.html" class="text-gray-700 hover:text-gray-900 transition-colors py-2">Providers</a>
+          <a href="appointment.html" class="text-gray-700 hover:text-gray-900 transition-colors py-2">Appointments</a>
           <a href="join.html" class="px-6 py-2 bg-[#00CFFF] text-[#00132B] rounded-full hover:bg-[#21DAFF] transition-colors font-medium inline-block text-center mt-2">Apply Now</a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Form card -->
+  <!-- Appointment Form Card -->
   <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-      <!-- Cyan header -->
       <div class="bg-cyan-bright text-dark-navy px-6 sm:px-8 py-6">
-        <h1 class="text-2xl sm:text-3xl font-bold">Become a Provider</h1>
-        <p class="text-dark-navy/80 mt-1">Eye Clinics and Auto Dealers Only</p>
-        <p class="text-dark-navy/70 text-sm">Join the AutoVision Initiative as a trusted partner in our Smart Glasses Adoption Program.</p>
+        <h1 class="text-2xl sm:text-3xl font-bold">Schedule Your Next Appointment</h1>
+        <p class="text-dark-navy/80 mt-1">Fill out the form and we will reach out via WhatsApp to confirm details.</p>
       </div>
 
       <div class="p-6 sm:p-8">
-        <form id="providerForm" class="space-y-5" enctype="multipart/form-data">
+        <form id="appointmentForm" class="space-y-5">
           <div>
-            <label for="prov_fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-            <input id="prov_fullName" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-cyan-bright focus:border-cyan-bright placeholder-gray-400" type="text" placeholder="Enter your full name" required>
+            <label for="apmt_fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+            <input id="apmt_fullName" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-cyan-bright focus:border-cyan-bright placeholder-gray-400" type="text" placeholder="Enter your full name" required>
           </div>
 
           <div>
-            <label for="prov_email" class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
-            <input id="prov_email" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-cyan-bright focus:border-cyan-bright placeholder-gray-400" type="email" placeholder="your.email@example.com" required>
+            <label for="apmt_email" class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
+            <input id="apmt_email" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-cyan-bright focus:border-cyan-bright placeholder-gray-400" type="email" placeholder="your.email@example.com" required>
           </div>
 
           <div>
-            <label for="prov_whatsapp" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp Number *</label>
-            <input id="prov_whatsapp" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-cyan-bright focus:border-cyan-bright placeholder-gray-400" type="text" placeholder="+234 800 000 0000" required>
+            <label for="apmt_whatsapp" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp Number *</label>
+            <input id="apmt_whatsapp" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-cyan-bright focus:border-cyan-bright placeholder-gray-400" type="text" placeholder="e.g. +234 800 000 0000" required>
           </div>
 
           <div>
-            <label for="prov_businessDoc" class="block text-sm font-medium text-gray-700 mb-1">Upload Business Profile *</label>
-            <input id="prov_businessDoc" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-gray-100 file:text-gray-700" type="file" accept=".pdf,.jpg,.png,.jpeg">
+            <label for="apmt_type" class="block text-sm font-medium text-gray-700 mb-1">Select Option *</label>
+            <select id="apmt_type" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-cyan-bright focus:border-cyan-bright" required>
+              <option value="" disabled selected>Select appointment type</option>
+              <option value="Eye Clinic">Eye Clinic</option>
+              <option value="Auto Vendor">Auto Vendor</option>
+            </select>
           </div>
 
-          <button type="submit" class="w-full bg-[#00CFFF] text-[#00132B] py-3 rounded-lg font-semibold shadow hover:bg-[#21DAFF]">Submit</button>
+          <div>
+            <label for="apmt_date" class="block text-sm font-medium text-gray-700 mb-1">Visiting Date *</label>
+            <input id="apmt_date" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-cyan-bright focus:border-cyan-bright" type="date" required>
+          </div>
+
+          <button type="submit" class="w-full bg-[#00CFFF] text-[#00132B] py-3 rounded-lg font-semibold shadow hover:bg-[#21DAFF] transition-colors">Submit</button>
         </form>
-
-        <p id="provStatus" class="text-xs sm:text-sm mt-4 text-gray-500">Our team will review and contact you within 7 working days.</p>
+        <p id="apmtStatus" class="text-xs sm:text-sm mt-4 text-gray-500"></p>
       </div>
     </div>
   </div>
 
+  <!-- EmailJS SDK + init -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>emailjs.init("4WOek3n6n1clSIhdE");</script>
-  <!-- add this above your notifications.js script -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 
   <!-- site interactions (mobile menu, smooth scroll) -->
   <script src="./js/site.js"></script>
+
+  <!-- Form submission handler -->
   <script src="./js/notifications.js"></script>
 </body>
 </html>
